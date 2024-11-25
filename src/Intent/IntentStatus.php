@@ -21,7 +21,7 @@ class IntentStatus
     {
         $intentStatus = new self();
 
-        $intentStatus->code = isset($amazonRequest['code']) ? $amazonRequest['code'] : null;
+        $intentStatus->code = $amazonRequest['code'] ?? null;
 
         return $intentStatus;
     }

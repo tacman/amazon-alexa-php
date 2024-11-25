@@ -11,16 +11,10 @@ use MaxBeckers\AmazonAlexa\Request\Request;
 class RequestHandlerRegistry
 {
     /**
-     * @var AbstractRequestHandler[]
-     */
-    private $requestHandlers;
-
-    /**
      * @param AbstractRequestHandler[] $requestHandlers
      */
-    public function __construct(array $requestHandlers = [])
+    public function __construct(private array $requestHandlers = [])
     {
-        $this->requestHandlers = $requestHandlers;
     }
 
     /**

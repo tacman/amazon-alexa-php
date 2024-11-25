@@ -32,7 +32,7 @@ class IntentRequest extends StandardRequest
      */
     public static function fromAmazonRequest(array $amazonRequest): AbstractRequest
     {
-        $request = new static();
+        $request = new self();
 
         $request->type        = static::TYPE;
         $request->dialogState = PropertyHelper::checkNullValueString($amazonRequest, 'dialogState');

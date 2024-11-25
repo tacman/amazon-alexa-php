@@ -9,20 +9,16 @@ use MaxBeckers\AmazonAlexa\Request\Request\AbstractRequest;
  */
 abstract class AlexaSkillEventRequest extends AbstractRequest
 {
-    /**
-     * @var string
-     */
-    public $eventCreationTime;
+    public \DateTimeInterface $eventCreationTime;
+
+    public  \DateTimeInterface $eventPublishingTime;
 
     /**
      * @var string
      */
-    public $eventPublishingTime;
+    public string $requestId;
 
-    /**
-     * @var string
-     */
-    public $requestId;
+    public ?string $locale=null;
 
     /**
      * @param array $amazonRequest
@@ -35,7 +31,7 @@ abstract class AlexaSkillEventRequest extends AbstractRequest
         $this->setTime('eventCreationTime', $amazonRequest['eventCreationTime']);
         $this->setTime('eventPublishingTime', $amazonRequest['eventPublishingTime']);
 
-        $this->locale = $amazonRequest['locale'];
+        $this->locale = $amazonRequest['locale']??null;
     }
 
     private function setTime($attribute, $value)
@@ -43,7 +39,7 @@ abstract class AlexaSkillEventRequest extends AbstractRequest
         //Workaround for amazon developer console sending unix timestamp
         try {
             $this->{$attribute} = new \DateTime($value);
-        } catch (\Exception $e) {
+        } catch (\Exception) {
             $this->{$attribute} = (new \DateTime())->setTimestamp(intval($value / 1000));
         }
     }

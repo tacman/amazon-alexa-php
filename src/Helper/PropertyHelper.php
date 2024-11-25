@@ -17,7 +17,7 @@ class PropertyHelper
      */
     public static function checkNullValueString(array $data, string $key)
     {
-        return isset($data[$key]) ? $data[$key] : null;
+        return $data[$key] ?? null;
     }
 
     /**
@@ -28,6 +28,6 @@ class PropertyHelper
      */
     public static function checkNullValueInt(array $data, string $key)
     {
-        return isset($data[$key]) ? $data[$key] : null;
+        return $data[$key] ?? null;
     }
 }

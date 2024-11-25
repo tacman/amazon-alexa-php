@@ -95,16 +95,10 @@ class RequestHandlerRegistryTest extends TestCase
 class SimpleTestRequestHandler extends AbstractRequestHandler
 {
     /**
-     * @var ResponseHelper
-     */
-    private $responseHelper;
-
-    /**
      * @param ResponseHelper $responseHelper
      */
-    public function __construct(ResponseHelper $responseHelper)
+    public function __construct(private readonly ResponseHelper $responseHelper)
     {
-        $this->responseHelper          = $responseHelper;
         $this->supportedApplicationIds = ['my_amazon_skill_id'];
     }
 

@@ -32,7 +32,7 @@ class SsmlGenerator implements SsmlTypes
     /**
      * @return string
      */
-    public function getSsml()
+    public function getSsml(): string
     {
         return sprintf('<speak>%s</speak>', implode(' ', $this->parts));
     }
@@ -57,7 +57,7 @@ class SsmlGenerator implements SsmlTypes
      */
     public function playMp3(string $mp3Url)
     {
-        if (1 !== preg_match('/^(https:\/\/.*\.mp3.*)$/i', $mp3Url) && 0 !== strpos($mp3Url, 'soundbank://')) {
+        if (1 !== preg_match('/^(https:\/\/.*\.mp3.*)$/i', $mp3Url) && !str_starts_with($mp3Url, 'soundbank://')) {
             throw new InvalidSsmlException(sprintf('"%s" in not a valid mp3 url!', $mp3Url));
         }
         $this->parts[] = sprintf('<audio src="%s" />', $mp3Url);

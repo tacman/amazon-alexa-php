@@ -2,7 +2,7 @@ name: PHP Composer
 
 on:
   push:
-    branches: [ "master" ]
+#    branches: [ "master" ] # removed when testing tac branch
   pull_request:
     branches: [ "master" ]
 
@@ -15,7 +15,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v3
+    - uses: actions/checkout@v4
 
     - name: Cache Composer packages
       id: composer-cache

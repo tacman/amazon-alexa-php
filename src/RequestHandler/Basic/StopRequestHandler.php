@@ -14,24 +14,12 @@ use MaxBeckers\AmazonAlexa\Response\Response;
 class StopRequestHandler extends AbstractRequestHandler
 {
     /**
-     * @var ResponseHelper
-     */
-    private $responseHelper;
-
-    /**
-     * @var string
-     */
-    private $output;
-
-    /**
      * @param ResponseHelper $responseHelper
      * @param string         $output
      * @param array          $supportedApplicationIds
      */
-    public function __construct(ResponseHelper $responseHelper, string $output, array $supportedApplicationIds)
+    public function __construct(private readonly ResponseHelper $responseHelper, private readonly string $output, array $supportedApplicationIds)
     {
-        $this->responseHelper          = $responseHelper;
-        $this->output                  = $output;
         $this->supportedApplicationIds = $supportedApplicationIds;
     }
 

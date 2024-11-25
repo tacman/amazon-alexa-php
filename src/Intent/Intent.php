@@ -35,8 +35,8 @@ class Intent implements \JsonSerializable
     {
         $intent = new self();
 
-        $intent->name               = isset($amazonRequest['name']) ? $amazonRequest['name'] : null;
-        $intent->confirmationStatus = isset($amazonRequest['confirmationStatus']) ? $amazonRequest['confirmationStatus'] : null;
+        $intent->name               = $amazonRequest['name'] ?? null;
+        $intent->confirmationStatus = $amazonRequest['confirmationStatus'] ?? null;
 
         if (isset($amazonRequest['slots'])) {
             foreach ($amazonRequest['slots'] as $name => $slot) {
@@ -50,7 +50,7 @@ class Intent implements \JsonSerializable
     /**
      * @inheritdoc
      */
-    public function jsonSerialize()
+    public function jsonSerialize(): array
     {
         $data = [];
 

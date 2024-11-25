@@ -26,10 +26,10 @@ abstract class AbstractPlaybackController extends AbstractRequest
     {
         try {
             $this->timestamp = new \DateTime($amazonRequest['timestamp']);
-        } catch (\Exception $e) {
+        } catch (\Exception) {
             $this->timestamp = (new \DateTime())->setTimestamp(intval($amazonRequest['timestamp'] / 1000));
         }
-        $this->requestId = isset($amazonRequest['requestId']) ? $amazonRequest['requestId'] : null;
-        $this->locale    = isset($amazonRequest['locale']) ? $amazonRequest['locale'] : null;
+        $this->requestId = $amazonRequest['requestId'] ?? null;
+        $this->locale    = $amazonRequest['locale'] ?? null;
     }
 }

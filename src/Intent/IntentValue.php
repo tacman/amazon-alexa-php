@@ -26,8 +26,8 @@ class IntentValue
     {
         $intentValue = new self();
 
-        $intentValue->name = isset($amazonRequest['name']) ? $amazonRequest['name'] : null;
-        $intentValue->id   = isset($amazonRequest['id']) ? $amazonRequest['id'] : null;
+        $intentValue->name = $amazonRequest['name'] ?? null;
+        $intentValue->id   = $amazonRequest['id'] ?? null;
 
         return $intentValue;
     }

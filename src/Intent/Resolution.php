@@ -31,7 +31,7 @@ class Resolution implements \JsonSerializable
     {
         $resolution = new self();
 
-        $resolution->authority = isset($amazonRequest['authority']) ? $amazonRequest['authority'] : null;
+        $resolution->authority = $amazonRequest['authority'] ?? null;
         $resolution->status    = isset($amazonRequest['status']) ? IntentStatus::fromAmazonRequest($amazonRequest['status']) : null;
 
         if (isset($amazonRequest['values'])) {
@@ -48,7 +48,7 @@ class Resolution implements \JsonSerializable
     /**
      * @inheritdoc
      */
-    public function jsonSerialize()
+    public function jsonSerialize(): array
     {
         $data = [];
         if ($this->authority) {

@@ -35,7 +35,7 @@ abstract class AudioPlayerRequest extends AbstractRequest
         //Workaround for amazon developer console sending unix timestamp
         try {
             $this->timestamp = new \DateTime($amazonRequest['timestamp']);
-        } catch (\Exception $e) {
+        } catch (\Exception) {
             $this->timestamp = (new \DateTime())->setTimestamp(intval($amazonRequest['timestamp'] / 1000));
         }
         $this->locale = $amazonRequest['locale'];

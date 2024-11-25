@@ -26,17 +26,11 @@ class RequestValidator
     public $client;
 
     /**
-     * @var int
-     */
-    protected $timestampTolerance;
-
-    /**
      * @param int         $timestampTolerance
      * @param Client|null $client
      */
-    public function __construct($timestampTolerance = self::TIMESTAMP_VALID_TOLERANCE_SECONDS, Client $client = null)
+    public function __construct(protected $timestampTolerance = self::TIMESTAMP_VALID_TOLERANCE_SECONDS, Client $client = null)
     {
-        $this->timestampTolerance = $timestampTolerance;
         $this->client             = $client ?: new Client();
     }
 
@@ -54,7 +48,7 @@ class RequestValidator
         $this->validateTimestamp($request);
         try {
             $this->validateSignature($request);
-        } catch (OutdatedCertExceptionException $e) {
+        } catch (OutdatedCertExceptionException) {
             // load cert again and validate because temp file was outdatet.
             $this->validateSignature($request);
         }
@@ -205,7 +199,7 @@ class RequestValidator
     private function validateCertSubject(array $cert)
     {
         if (false === isset($cert['extensions']['subjectAltName']) ||
-            false === stristr($cert['extensions']['subjectAltName'], 'echo-api.amazon.com')
+            false === stristr((string) $cert['extensions']['subjectAltName'], 'echo-api.amazon.com')
         ) {
             throw new RequestInvalidSignatureException('Cert subject error.');
         }

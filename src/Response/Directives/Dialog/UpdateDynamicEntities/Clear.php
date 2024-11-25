@@ -11,7 +11,7 @@ class Clear extends UpdateDynamicEntities
      */
     public static function create(): self
     {
-        $directive = new static();
+        $directive = new self();
 
         $directive->type           = static::TYPE;
         $directive->updateBehavior = static::UPDATE_BEHAVIOR;

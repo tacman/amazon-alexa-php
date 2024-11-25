@@ -4,6 +4,8 @@ namespace MaxBeckers\AmazonAlexa\Test\Helper;
 
 use MaxBeckers\AmazonAlexa\Exception\InvalidSsmlException;
 use MaxBeckers\AmazonAlexa\Helper\SsmlGenerator;
+use MaxBeckers\AmazonAlexa\Helper\SsmlTypes;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -11,11 +13,9 @@ use PHPUnit\Framework\TestCase;
  */
 class SsmlGeneratorTest extends TestCase
 {
-    public static function getVoices()
+    public static function getVoices(): array
     {
-        return array_map(function ($item) {
-            return [$item];
-        }, SsmlGenerator::VOICES);
+        return array_map(fn($item) => [$item], SsmlGenerator::VOICES);
     }
 
     public function testClear()
@@ -238,9 +238,7 @@ class SsmlGeneratorTest extends TestCase
         $ssmlGenerator->sayWithVoice('invalid', 'Just a Test');
     }
 
-    /**
-     * @dataProvider getVoices
-     */
+    #[DataProvider('getVoices')]
     public function testSayWithVoice(string $voice)
     {
         $ssmlGenerator = new SsmlGenerator();
@@ -258,7 +256,7 @@ class SsmlGeneratorTest extends TestCase
     public function testWord()
     {
         $ssmlGenerator = new SsmlGenerator();
-        $ssmlGenerator->word(SsmlGenerator::INTERPRET_WORD_VB, 'Just a test.');
-        $this->assertSame(sprintf('<speak><w role="%s">Just a test.</w></speak>', SsmlGenerator::INTERPRET_WORD_VB), $ssmlGenerator->getSsml());
+        $ssmlGenerator->word(SsmlTypes::INTERPRET_WORD_VB, 'Just a test.');
+        $this->assertSame(sprintf('<speak><w role="%s">Just a test.</w></speak>', SsmlTypes::INTERPRET_WORD_VB), $ssmlGenerator->getSsml());
     }
 }

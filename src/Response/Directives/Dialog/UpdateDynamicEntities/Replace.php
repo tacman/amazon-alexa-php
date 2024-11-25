@@ -26,7 +26,7 @@ class Replace extends UpdateDynamicEntities
      */
     public static function create(): self
     {
-        $directive = new static();
+        $directive = new self();
 
         $directive->type           = self::TYPE;
         $directive->types          = [];

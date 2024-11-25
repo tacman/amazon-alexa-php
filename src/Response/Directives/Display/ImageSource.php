@@ -60,7 +60,7 @@ class ImageSource implements \JsonSerializable
     /**
      * @inheritdoc
      */
-    public function jsonSerialize()
+    public function jsonSerialize(): \ArrayObject
     {
         $data = new \ArrayObject();
 
