@@ -15,7 +15,7 @@ class SsmlGeneratorTest extends TestCase
 {
     public static function getVoices(): array
     {
-        return array_map(fn($item) => [$item], SsmlGenerator::VOICES);
+        return array_map(fn ($item) => [$item], SsmlGenerator::VOICES);
     }
 
     public function testClear()

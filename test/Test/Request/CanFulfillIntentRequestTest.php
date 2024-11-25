@@ -3,8 +3,8 @@
 namespace MaxBeckers\AmazonAlexa\Test\Request;
 
 use MaxBeckers\AmazonAlexa\Request\Request;
-use MaxBeckers\AmazonAlexa\Request\Request\Standard\IntentRequest;
 use MaxBeckers\AmazonAlexa\Request\Request\CanFulfill\CanFulfillIntentRequest;
+use MaxBeckers\AmazonAlexa\Request\Request\Standard\IntentRequest;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -21,7 +21,7 @@ class CanFulfillIntentRequestTest extends TestCase
         $this->assertSame(CanFulfillIntentRequest::TYPE, $request->request->type);
 
         // was...
-//        $this->assertInstanceOf(CanFulfillIntentRequest::class, $request->request);
-//        $this->assertSame(CanFulfillIntentRequest::TYPE, $request->request->type);
+        //        $this->assertInstanceOf(CanFulfillIntentRequest::class, $request->request);
+        //        $this->assertSame(CanFulfillIntentRequest::TYPE, $request->request->type);
     }
 }

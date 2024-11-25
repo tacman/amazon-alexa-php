@@ -11,14 +11,14 @@ abstract class AlexaSkillEventRequest extends AbstractRequest
 {
     public \DateTimeInterface $eventCreationTime;
 
-    public  \DateTimeInterface $eventPublishingTime;
+    public \DateTimeInterface $eventPublishingTime;
 
     /**
      * @var string
      */
     public string $requestId;
 
-    public ?string $locale=null;
+    public ?string $locale = null;
 
     /**
      * @param array $amazonRequest
@@ -31,7 +31,7 @@ abstract class AlexaSkillEventRequest extends AbstractRequest
         $this->setTime('eventCreationTime', $amazonRequest['eventCreationTime']);
         $this->setTime('eventPublishingTime', $amazonRequest['eventPublishingTime']);
 
-        $this->locale = $amazonRequest['locale']??null;
+        $this->locale = $amazonRequest['locale'] ?? null;
     }
 
     private function setTime($attribute, $value)

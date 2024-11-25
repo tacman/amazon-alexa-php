@@ -29,7 +29,7 @@ abstract class SystemRequest extends AbstractRequest
      */
     protected function setRequestData(array $amazonRequest)
     {
-        $this->requestId = $amazonRequest['requestId']??null;
+        $this->requestId = $amazonRequest['requestId'] ?? null;
         //Workaround for amazon developer console sending unix timestamp
         if ($timeStamp = $amazonRequest['timestamp'] ?? null) {
             try {
@@ -38,6 +38,6 @@ abstract class SystemRequest extends AbstractRequest
                 $this->timestamp = (new \DateTime())->setTimestamp(intval($amazonRequest['timestamp'] / 1000));
             }
         }
-        $this->locale = $amazonRequest['locale']??null;
+        $this->locale = $amazonRequest['locale'] ?? null;
     }
 }

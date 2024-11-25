@@ -37,7 +37,7 @@ class Slot implements \JsonSerializable
         $slot = new self();
 
         $slot->name               = $name;
-        $slot->value              = $amazonRequest['value'] ?? null;
+        $slot->value              = $amazonRequest['value']              ?? null;
         $slot->confirmationStatus = $amazonRequest['confirmationStatus'] ?? null;
 
         if (isset($amazonRequest['resolutions']['resolutionsPerAuthority'])) {
