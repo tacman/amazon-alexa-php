@@ -11,15 +11,14 @@ use PHPUnit\Framework\TestCase;
 /**
  * @author Fabian Graßl <fabian.grassl@db-n.com>
  */
+#[\PHPUnit\Framework\Attributes\CoversClass(\MaxBeckers\AmazonAlexa\Request\Request\GameEngine\InputHandlerEvent::class)]
+#[\PHPUnit\Framework\Attributes\CoversClass(\MaxBeckers\AmazonAlexa\Request\Request\GameEngine\Event\Event::class)]
+#[\PHPUnit\Framework\Attributes\CoversClass(\MaxBeckers\AmazonAlexa\Request\Request\GameEngine\Event\InputEvent::class)]
 class InputHandlerEventTest extends TestCase
 {
     /**
      * @throws \MaxBeckers\AmazonAlexa\Exception\MissingRequestDataException
      * @throws \MaxBeckers\AmazonAlexa\Exception\MissingRequiredHeaderException
-     *
-     * @covers \MaxBeckers\AmazonAlexa\Request\Request\GameEngine\InputHandlerEvent::fromAmazonRequest
-     * @covers \MaxBeckers\AmazonAlexa\Request\Request\GameEngine\Event\Event::fromAmazonRequest
-     * @covers \MaxBeckers\AmazonAlexa\Request\Request\GameEngine\Event\InputEvent::fromAmazonRequest
      */
     public function testIntentRequest()
     {

@@ -15,7 +15,7 @@ use Rector\Symfony\Rector\MethodCall\GetHelperControllerToServiceRector;
 
 return static function (RectorConfig $rectorConfig): void {
     $rectorConfig->paths([
-        __DIR__ . '/src/',
+        __DIR__ . '/test/',
     ]);
 
     $rectorConfig->rules([
@@ -29,6 +29,7 @@ return static function (RectorConfig $rectorConfig): void {
     $rectorConfig->sets([
         LevelSetList::UP_TO_PHP_83,
         DoctrineSetList::ANNOTATIONS_TO_ATTRIBUTES,
+        \Rector\PHPUnit\Set\PHPUnitSetList::ANNOTATIONS_TO_ATTRIBUTES,
         SymfonySetList::SYMFONY_64,
     ]);
 };

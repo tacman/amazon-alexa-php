@@ -146,9 +146,7 @@ class AudioTest extends TestCase
         $this->assertSame(PlaybackNearlyFinished::TYPE, $playbackNearlyFinished->type);
     }
 
-    /**
-     * @dataProvider getPlaybackFailed
-     */
+    #[\PHPUnit\Framework\Attributes\DataProvider('getPlaybackFailed')]
     public function testPlaybackFailedDirective(string $errorReason, string $playerActivity)
     {
         $error                = Error::create($errorReason, 'message');
